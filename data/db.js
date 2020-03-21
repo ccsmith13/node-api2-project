@@ -18,7 +18,8 @@ function find() {
 }
 
 function findById(id) {
-  return db('posts').where({ id: Number(id) });
+  return db('posts').where({ id: Number(id) })
+    .first();
 }
 
 function insert(post) {
@@ -28,6 +29,7 @@ function insert(post) {
 }
 
 function update(id, post) {
+  console.log(id);
   return db('posts')
     .where('id', Number(id))
     .update(post);
