@@ -1,8 +1,6 @@
 
 require('dotenv').config(); 
 
-const port = process.env.PORT || 5000;
-
 const express = require('express');
 
 const postRoutes = require('./posts/postRoutes');
@@ -11,5 +9,9 @@ const server = express();
 
 server.use('/posts', postRoutes);
 
-server.listen(5000, () => console.log('API running on port 5000'));
+if (!module.parent) {
+  var port = process.env.PORT || 5000;
+  server.listen(port);
+  console.log('Express started on port 5000');
+}
 
