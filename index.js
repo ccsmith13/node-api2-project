@@ -7,8 +7,6 @@ const postRoutes = require('./posts/postRoutes');
 
 const server = express();
 
-server.get('/', function(req,res) => res.send({message:"Hello World"}));
-
 server.use('/posts', postRoutes);
 
 if (!module.parent) {
