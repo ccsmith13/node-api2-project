@@ -46,6 +46,7 @@ router.get('/:id/comments', (req, res) => {
 
 router.post('/', (req, res) => {
     const post = (req.query)
+    //const random = req.body
     if (req.query.title && req.query.contents) {
         db.insert(post)
             .then(post => {
@@ -103,9 +104,11 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const post = req.query
-    if (id) {
+    //console.log(id, post);
+    //console.log(db.findById(id));
+    if (db.findById(id)) {
         db.update(id, post)
             .then(post => {
                 if ((req.query.title) && (req.query.contents)) {

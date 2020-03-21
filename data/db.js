@@ -29,6 +29,7 @@ function insert(post) {
 }
 
 function update(id, post) {
+  console.log(id);
   return db('posts')
     .where('id', Number(id))
     .update(post);
